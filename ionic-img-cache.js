@@ -1,5 +1,11 @@
 (function(document) {
   'use strict';
+  var ImgCache = ImgCache || null;
+  if (!ImgCache) {
+  	if (typeof require === 'function') {
+  		ImgCache = require('imgcache.js');
+  	}
+  }
 
   angular
     .module('ionicImgCache', ['ionic'])
