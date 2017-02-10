@@ -9,11 +9,11 @@
 
   angular
     .module('ionicImgCache', ['ionic'])
-    .run(init)
+    .run(['$ionicPlatform', 'ionicImgCache', init])
     .provider('ionicImgCache', ionicImgCacheProvider)
-    .factory('ionImgCacheSrv', ionImgCacheSrv)
-    .directive('ionImgCache', ionImgCache)
-    .directive('ionImgCacheBg', ionImgCacheBg);
+    .factory('ionImgCacheSrv', ['$q', ionImgCacheSrv])
+    .directive('ionImgCache', ['ionImgCacheSrv', ionImgCache])
+    .directive('ionImgCacheBg', ['ionImgCacheSrv', ionImgCacheBg]);
 
   function init($ionicPlatform, ionicImgCache) {
     /* ngInject */
